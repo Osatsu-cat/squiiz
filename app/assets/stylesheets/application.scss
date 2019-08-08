@@ -1,7 +1,9 @@
-@import 'reset';
-@import 'color';
-@import 'questions';
-
 *{
   box-sizing: border-box;
 }
+
+@import 'reset';
+@import 'font-awesome';
+@import 'color';
+@import 'questions';
+@import 'header';

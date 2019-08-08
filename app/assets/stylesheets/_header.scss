@@ -1,0 +1,35 @@
+.header{
+  width: 100%;
+  height: 50px;
+  background: $dark-blue;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  &__menu{
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    p{
+      display: block;
+      margin-left: 10px;
+      color: white;
+      line-height: 50px;
+    }
+    .menu_icon{
+      display: block;
+      height: 100%;
+      color: white;
+      font-size: 30px;
+      line-height: 50px;
+      margin-right: 10px;
+    }
+  }
+  &_logo{
+    height: 80%;
+    display:block;
+    margin: 10px auto;
+  }
+}

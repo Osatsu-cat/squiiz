@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
   root "questions#top"
+  resources :users
   resources :questions do 
     collection do
       get :test 
