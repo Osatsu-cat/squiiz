@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "questions#top"
-  resources :questions do
+  resources :questions do 
     collection do
       get :test 
     end

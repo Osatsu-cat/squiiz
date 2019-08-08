@@ -6,6 +6,10 @@ class QuestionsController < ApplicationController
   def top
   end
 
+  def test
+    
+  end
+
   def index
     @questions = Question.all
   end
