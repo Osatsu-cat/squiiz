@@ -1,0 +1,35 @@
+.login_container
+  -# = image_tag 'logo.png'
+  -# = link_to "START!", test_questions_path , class:"btn start_btn"
+  .login_form
+    .login_form__top
+      = image_tag 'logo_s.png', class: "login_logo"
+    %h2 新規登録フォーム
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field
+        = f.label :nickname
+        %br/
+        = f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "login_form__box"
+      .field
+      .field
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "login_form__box"
+      .field
+        = f.label :password
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} characters minimum)
+        %br/
+        = f.password_field :password, autocomplete: "new-password", class: "login_form__box"
+      .field
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "login_form__box"
+      .actions
+        = f.submit "登録する", class: "signup_btn"
+    = link_to " ログインはこちら",  new_user_session_path, class: 'devise_link'
+    -# = render "devise/shared/links"
+%svg{:version => "1.1", :xmlns => "http://www.w3.org/2000/svg", class: "login_wave"}
+  %path#wave{:d => ""}

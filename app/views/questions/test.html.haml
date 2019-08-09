@@ -1,0 +1,28 @@
+= render 'layouts/header'
+.test_container
+  .question_box
+    .question_box__q
+      = image_tag 'Qmark.png' 
+      .question_box__q__content
+        %p 
+          = 'ブラウザにURLを打ち込んでサイトが表示されるまでの仕組みを教えてください'
+          %br
+          = link_to "https://docs.google.com/spreadsheets/d/11CDfzbK1snzBovbYiBdAZkA6ZbiYEY0NtT8v8FTnnr4/edit#gid=0", target: :_blank do
+            リンク
+    .question_box__a
+      .question_box__a__menu
+        = image_tag 'Amark.png' 
+        .a__hide
+          %p 正解を見る(クリック)
+          = ""
+      .question_box__a__content
+        %p 
+          = simple_format("Aは「原子性」を表す「Atomicity」でトランザクションが終わった時に、そこに含まれていた更新処理が全て実行されるか、全て実行されない状態で終わることを保証する性質です。\nCは「一貫性」の「Consistency」でトランザクションに含まれる処理はそれぞれの制約を満たすという性質です。\nIは「独立性」のIsolationであるトランザクションが実行中の場合、もう一方のその他のトランザクションの影響を受けないという性質です。\nDは「永続性」のDurabilityでトランザクションが完了した後、そのデータ状態が保存され失われることは無いという性質です")
+          %br
+          参考URL
+          %span 
+            = link_to "①","#", class: "cf_link"
+        .result_box
+          %button.correct_btn ⭕️
+          %button.correct_btn ❌
+        %button.next_btn 次ヘ進む
