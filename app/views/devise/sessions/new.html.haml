@@ -1,0 +1,24 @@
+.login_container
+  .login_form
+    .login_form__top
+      = image_tag 'logo_s.png', class: "login_logo"
+    %h2 ログインフォーム
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "login_form__box"
+      .field
+        = f.label :password
+        %br/
+        = f.password_field :password, autocomplete: "current-password", class: "login_form__box"
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .actions
+        = f.submit "ログイン", class: "signup_btn"
+    = link_to "新規登録はこちら",  new_user_registration_path, class: 'devise_link'
+    -# = render "devise/shared/links"
+%svg{:version => "1.1", :xmlns => "http://www.w3.org/2000/svg", class: "login_wave"}
+  %path#wave{:d => ""}

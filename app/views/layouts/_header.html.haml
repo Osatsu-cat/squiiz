@@ -1,7 +1,9 @@
 .header
   = image_tag 'logo_s.png', class: 'header_logo'
-  .header__menu
+  .header__content
     %p
-      = "welcome, おさつ！"
-    %a
-      = fa_icon 'bars', class:'menu_icon'
+      = "welcome, #{current_user.nickname}！"
+    = fa_icon 'bars', class:'menu_icon'
+  .header__menu
+    = link_to "ログアウト", destroy_user_session_path, class: "header__menu__link", method: :delete
+    = link_to "マイページ","#", class: "header__menu__link" 

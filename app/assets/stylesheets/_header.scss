@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   z-index: 10;
-  &__menu{
+  &__content{
     width: 100vw;
     display: flex;
     justify-content: space-between;
@@ -20,16 +20,43 @@
     }
     .menu_icon{
       display: block;
-      height: 100%;
+      height: 50px;
       color: white;
       font-size: 30px;
       line-height: 50px;
       margin-right: 10px;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+  &__menu{
+    display: none;
+    width:150px;
+    float: right;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    z-index: 10;
+    &__link{
+      display: block;
+      height:50px;
+      line-height: 50px;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      background: $dark-blue;
+      opacity: 0.8;
+      &:hover{
+        opacity: 0.9;
+      }
     }
   }
   &_logo{
     height: 80%;
     display:block;
-    margin: 10px auto;
+    margin: 0 auto;
+    position: relative;
+    top: 5px;
   }
 }
