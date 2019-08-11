@@ -7,8 +7,19 @@ class QuestionsController < ApplicationController
   end
 
   def test
-    
+    @questions = Question.all.shuffle
   end
+
+  def count
+    @correct = Correct.find_or_initialize_by(user_id: current_user.id, question_id: params[:id])
+    @correct.update_attributes(
+      y_count: @correct.y_count += params[:y_count].to_i,
+      n_count: @correct.n_count += params[:n_count].to_i,
+      sum: @correct.sum += 1
+    )
+    @correct.update_attributes(accuracy: (@correct.y_count * 100) / @correct.sum )
+  end
+
 
   def index
     @questions = Question.all

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_09_171415) do
+ActiveRecord::Schema.define(version: 2019_08_10_073932) do
+
+  create_table "cfs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "link"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_cfs_on_question_id"
+  end
 
   create_table "corrects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -49,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_08_09_171415) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cfs", "questions"
   add_foreign_key "corrects", "questions"
   add_foreign_key "corrects", "users"
   add_foreign_key "questions", "users"
