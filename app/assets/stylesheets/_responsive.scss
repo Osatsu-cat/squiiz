@@ -1,2 +1,27 @@
-@media(max-width: 670px){
+@media screen and (max-width: 1000px){
+  .test_container{
+    .question_box{
+      width: 80%;
+      &__q__content{
+        font-size: 20px;
+      }
+      &__a__content{
+        .result_box{
+          width: 250px;
+          display: flex;
+          justify-content: space-between;
+          .correct_btn{
+            width: 80px;
+            margin: 0 10px;
+            line-height: 80px;
+            font-size: 50px;
+          }
+        }
+        .next_btn{
+          width: 80%;
+          font-size: 20px;
+        }
+      }
+    }
+  }
 }
