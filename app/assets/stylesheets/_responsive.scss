@@ -1,4 +1,9 @@
 @media screen and (max-width: 1000px){
+  .header__content{
+    p{
+      display: none;
+    }
+  }
   .test_container{
     .question_box{
       width: 90%;
