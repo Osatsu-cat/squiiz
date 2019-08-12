@@ -1,25 +1,60 @@
 @media screen and (max-width: 1000px){
   .test_container{
     .question_box{
-      width: 80%;
-      &__q__content{
-        font-size: 20px;
-      }
-      &__a__content{
-        .result_box{
-          width: 250px;
-          display: flex;
-          justify-content: space-between;
-          .correct_btn{
-            width: 80px;
-            margin: 0 10px;
-            line-height: 80px;
-            font-size: 50px;
+      width: 95%;
+      &__q{
+        padding: 10px;
+        min-height: 200px;
+        &__header{
+          height: 60px;
+          p{
+            line-height: 60px;
+            font-size: 35px;
           }
         }
-        .next_btn{
-          width: 80%;
-          font-size: 20px;
+        &__content{
+          font-size: 15px;
+          padding: 5px;
+        }
+      }
+      &__a{
+        padding: 10px;
+        &__menu{
+          padding: 0;
+          font-size: 15px;
+        }
+        &__content{
+          padding: 5px;
+          font-size: 15px;
+          .result_box{
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            .correct_btn{
+              width: 50px;
+              height: 50px;
+              margin: 0 10%;
+              font-size: 30px;
+              line-height: 50px;
+              box-shadow: 0px 0px 5px $shadow;
+            }
+          }
+          .next_btn{
+            width: 80%;
+            font-size: 20px;
+            margin: 30px auto;
+          }
+        }
+      }
+    }
+  }
+  #test_answer{
+    .question_box{
+      &__q{
+        &__content{
+          p{
+            font-size: 15px;
+          }
         }
       }
     }
