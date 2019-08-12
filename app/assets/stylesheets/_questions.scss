@@ -8,7 +8,7 @@
 // }
 
 #container{
-  min-height: 100vh;
+  min-height: calc(100vh - 50px);
   position: relative;
   .top_wave{
     height: 20vh;
@@ -77,9 +77,9 @@
 
 .test_container{
   width: 100vw;
-  min-height: 100vh;
+  min-height: calc(100vh - 50px);
   background-color: #DBEDF4;
-  padding-top: 50px;
+  padding: 50px 0;
   margin-top: 50px;
   color: $gray;
   .question_box{
@@ -188,7 +188,7 @@
           width: 350px;
           height: 70px;
           margin: 50px auto;
-          background: rgb(1, 185, 99);
+          background: #56CEA0;
           border-radius: 0.5em;
           color: white;
           font-size: 40px;
