@@ -1,7 +1,8 @@
 @media screen and (max-width: 1000px){
   .test_container{
     .question_box{
-      width: 95%;
+      width: 90%;
+      padding: 30px;
       &__q{
         padding: 10px;
         min-height: 200px;

@@ -32,7 +32,7 @@
                   %li
                     = link_to "【#{i + 1}】", cf.link , class: "cf_link", target: :_blank 
           .result_box
-            %button.correct_btn ⭕️
+            %button.correct_btn ⭕
             %button.correct_btn ❌
           - if question.corrects.find_by(user_id: current_user.id)
             .accuracy_count
