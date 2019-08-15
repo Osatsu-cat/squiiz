@@ -1,0 +1,40 @@
+= render 'layouts/header'
+.mypage_container
+  .mypage_bar
+    %ul
+      %li
+        = link_to "問題一覧", questions_path, class: "mypage_bar__menu mypage_bar__menu-select"
+      %li
+        = link_to "問題作成", "#", class: "mypage_bar__menu"
+      %li
+        = link_to "ユーザー編集", "#", class: "mypage_bar__menu"
+  .mypage_content
+    .mypage_content__header
+      %h1 
+        = "#{current_user.nickname}のマイページ"
+      .mypage_content__header__score
+        .score.accuracy_score
+          %p 平均正解率：
+          %h2
+            = "#{ current_user.corrects.sum(:accuracy) / current_user.corrects.count }％"
+        .score.sum_score
+          %p 総回答数：
+          %h2 
+            = "#{current_user.corrects.sum(:sum)}回"
+    .mypage_content__bottom
+      .mypage_content__bottom__tabs
+        = link_to "公開問題", questions_path, class: "mypage_tab"
+        = link_to "プライベート問題", private_questions_path, class: "mypage_tab"
+        .mypage_tab.mypage_tab-select 自分が作った問題
+      .mypage_content__bottom__boxes
+        .mypage__box#mine
+          - unless @questions == []
+            - @questions.order(id: "ASC").each do |question|
+              = render partial: 'question', locals: {question: question}
+          - else 
+            まだありません
+        .mypage__box#mie-user
+          - @user_questions.order(accuracy: "DESC").each do |question|
+            = render partial: 'question', locals: {question: question}
+          - @yet_questions.each do |question|
+            = render partial: 'question', locals: {question: question}

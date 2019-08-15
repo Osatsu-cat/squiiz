@@ -22,7 +22,21 @@ class QuestionsController < ApplicationController
 
 
   def index
-    @questions = Question.all
+    @questions = Question.where(publicness: 1)
+    @user_questions = @questions.left_joins(:corrects).where(corrects:{user_id: current_user.id})
+    @yet_questions = @questions.where.not(id: @user_questions.ids)
+  end
+
+  def index_p
+    @questions = current_user.questions.where(publicness: 0)
+    @user_questions = @questions.left_joins(:corrects).where(corrects:{user_id: current_user.id})
+    @yet_questions = @questions.where.not(id: @user_questions.ids)
+  end
+
+  def index_m
+    @questions = current_user.questions
+    @user_questions = @questions.left_joins(:corrects).where(corrects:{user_id: current_user.id})
+    @yet_questions = @questions.where.not(id: @user_questions.ids)
   end
 
   # GET /questions/1

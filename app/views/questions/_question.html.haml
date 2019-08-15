@@ -1,0 +1,16 @@
+.mypage_question 
+  .mypage_question__num 
+    = question.id
+  .mypage_question__q
+    -# = truncate(question.question, length: 40)
+    = question.question
+  - if question.corrects.find_by(user_id: current_user.id)
+    .mypage_question__accuracy
+      = "#{question.corrects.find_by(user_id: current_user.id).accuracy}%"
+    .mypage_question__sum
+      = "#{question.corrects.find_by(user_id: current_user.id).sum}回"
+  - else 
+    .mypage_question__accuracy
+      = "0%"
+    .mypage_question__sum
+      = "0回"

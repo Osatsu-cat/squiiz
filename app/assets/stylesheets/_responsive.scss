@@ -64,4 +64,57 @@
       }
     }
   }
+  .mypage_container{
+    .mypage_bar{
+      display: none;
+    }
+    .mypage_content{
+      width: 100%;
+      &__header{
+        height: 100px;
+        h1{
+          font-size: 20px;
+        }
+        .score{
+          p{
+            font-size: 10px;
+            height: 10px;
+          }
+          h2{
+            font-size: 20px;
+            display: inline-block;
+          }
+        }
+      }
+      &__bottom{
+        &__tabs{
+          height: 30px;
+          .mypage_tab{
+            font-size: 12px;
+            line-height: 30px;
+          }
+        }
+        &__boxes{
+          .mypage__box{
+            .mypage_question{
+              font-size: 10px;
+              line-height: 15px;
+              &__num{
+                width: 10%;
+              }
+              &__q{
+                width: 60%;
+              }
+              &__accuracy{
+                width: 15%;
+              }
+              &__sum{
+                width: 15%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

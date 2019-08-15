@@ -1,14 +1,62 @@
-%p#notice= notice
-%h1 Questions
-%table
-  %thead
-    %tr
-      %th{:colspan => "3"}
-  %tbody
-    - @questions.each do |question|
-      %tr
-        %td= link_to 'Show', question
-        %td= link_to 'Edit', edit_question_path(question)
-        %td= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Question', new_question_path
+= render 'layouts/header'
+.mypage_container
+  .mypage_bar
+    %ul
+      %li
+        = link_to "問題一覧", questions_path, class: "mypage_bar__menu mypage_bar__menu-select"
+      %li
+        = link_to "問題作成", "#", class: "mypage_bar__menu"
+      %li
+        = link_to "ユーザー編集", "#", class: "mypage_bar__menu"
+  .mypage_content
+    .mypage_content__header
+      %h1 
+        = "#{current_user.nickname}のマイページ"
+      .mypage_content__header__score
+        .score.accuracy_score
+          %p 平均正解率：
+          %h2
+            = "#{ current_user.corrects.sum(:accuracy) / current_user.corrects.count }％"
+        .score.sum_score
+          %p 総回答数：
+          %h2 
+            = "#{current_user.corrects.sum(:sum)}回"
+    .mypage_content__bottom
+      .mypage_content__bottom__tabs
+        .mypage_tab.mypage_tab-select 公開問題
+        = link_to "プライベート問題", private_questions_path, class: "mypage_tab"
+        = link_to "自分が作った問題", myquestions_questions_path, class: "mypage_tab"
+      .mypage_content__bottom__boxes
+        .mypage__box#public
+          .mypage_question.index
+            .mypage_question__num No.
+            .mypage_question__q 問題文
+            .mypage_question__accuracy 正解率
+            .mypage_question__sum 回答数
+          - @questions.order(id: "ASC").each do |question|
+            = render partial: 'question', locals: {question: question}
+        .mypage__box#public-user
+          .mypage_question.index
+            .mypage_question__num No.
+            .mypage_question__q 問題文
+            .mypage_question__accuracy 正解率
+            .mypage_question__sum 回答数
+          - @user_questions.order(accuracy: "DESC").each do |question|
+            = render partial: 'question', locals: {question: question}
+          - @yet_questions.each do |question|
+            = render partial: 'question', locals: {question: question}
+
+-# %p#notice= notice
+-# %h1 Questions
+-# %table
+-#   %thead
+-#     %tr
+-#       %th{:colspan => "3"}
+-#   %tbody
+-#     - @questions.each do |question|
+-#       %tr
+-#         %td= link_to 'Show', question
+-#         %td= link_to 'Edit', edit_question_path(question)
+-#         %td= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }
+-# %br/
+-# = link_to 'New Question', new_question_path
