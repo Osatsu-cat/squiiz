@@ -23,14 +23,14 @@ $(document).on('turbolinks:load', function(){
   //マイページメミューの表示(スマホ)
   $('.mypage_slide').on('click',function(){
     if($('.fa-chevron-right').css('display') == 'inline-block'){
-      $(this).animate({'left': '100px'}, 300);
+      $(this).animate({'left': '150px'}, 300);
       $('.mypage_bar').animate({'left': 0}, 300);
       $(this).find('.fa-chevron-right').hide();
       $(this).find('.fa-chevron-left').show();
       console.log("GO");
     }else{
       $(this).animate({'left': 0 }, 300);
-      $('.mypage_bar').animate({'left': '-100px'}, 300);
+      $('.mypage_bar').animate({'left': '-150px'}, 300);
       $(this).find('.fa-chevron-left').hide();
       $(this).find('.fa-chevron-right').show();
       console.log("BACK");
