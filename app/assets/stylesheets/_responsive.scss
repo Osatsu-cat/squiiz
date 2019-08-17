@@ -121,13 +121,14 @@
           .mypage__box{
             width: 90%;
             .mypage_question{
-              font-size: 10px;
-              line-height: 15px;
+              font-size: 13px;
+              line-height: 30px;
               &__num{
                 width: 10%;
               }
               &__q{
                 width: 60%;
+                font-size: 12px;
               }
               &__accuracy{
                 width: 15%;
