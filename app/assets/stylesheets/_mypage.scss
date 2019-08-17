@@ -7,6 +7,8 @@
     width: 15%;
     min-height: calc(100vh - 50px);
     background: rgb(117, 151, 182);
+    position: fixed;
+    z-index: 1;
     &__menu{
       display: block;
       width: 100%;
@@ -23,7 +25,24 @@
       }
     }
   }
+  .mypage_slide{
+    display: none;
+    width: 20px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+    padding-left:0 5px;
+    background: rgb(117, 151, 182);
+    opacity: 0.9;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 200px;
+    z-index: 1;
+    border-radius: 0 5px 5px 0;
+  }
   .mypage_content{
+    margin-left: 15%;
     width: 85%;
     min-height: calc(100vh - 50px);
     color: $gray;
@@ -76,11 +95,25 @@
           opacity: 0.8;
         }
       }
+      .dropdown{
+        margin-bottom: 20px;
+        color: $gray;
+        margin-right: 50px;
+        button{
+          float: right;
+          color: $gray;
+        }
+        &:after{
+          content: "";
+          display: block;
+          clear: both;
+        }
+      }
       &__boxes{
         width: 100%;
         min-height: calc(100vh - 300px);
         background: rgba(255, 0, 0, 0.349);
-        padding: 50px 0;
+        padding: 30px 0 50px;
         .mypage__box{
           width: 80%;
           background: white;
@@ -100,9 +133,24 @@
               width: 80%;
               padding-left: 5px;
               border-right: 1px solid $light-gray;
-              white-space: nowrap;
-              text-overflow: ellipsis;
-              overflow: hidden;
+              display:flex;
+              justify-content: space-between;
+              &__content{
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+              }
+              a{
+                display: block;
+                height: 30px;
+                font-size: 20px;
+                line-height: 30px;
+                margin: 0 10px;
+                opacity: 0.9;
+                &:hover{
+                  opacity: 1;
+                }
+              }
             }
             &__accuracy{
               width: 8%;
@@ -119,6 +167,14 @@
             color: white;
             border-radius: 5px 5px 0 0;
           }
+          .yet_index{
+            background:$light-gray;
+            color: white;
+            padding-left: 5%;
+          }
+        }
+        .user{
+          display: none;
         }
       }
     }

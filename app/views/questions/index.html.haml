@@ -8,6 +8,9 @@
         = link_to "問題作成", "#", class: "mypage_bar__menu"
       %li
         = link_to "ユーザー編集", "#", class: "mypage_bar__menu"
+  .mypage_slide
+    = fa_icon 'chevron-right'
+    = fa_icon 'chevron-left'
   .mypage_content
     .mypage_content__header
       %h1 
@@ -27,25 +30,20 @@
         = link_to "プライベート問題", private_questions_path, class: "mypage_tab"
         = link_to "自分が作った問題", myquestions_questions_path, class: "mypage_tab"
       .mypage_content__bottom__boxes
-        .mypage__box#public
-          .mypage_question.index
-            .mypage_question__num No.
-            .mypage_question__q 問題文
-            .mypage_question__accuracy 正解率
-            .mypage_question__sum 回答数
+        = render partial: 'order_dropdown'
+        .mypage__box.asc
+          = render partial: 'question_index'
           - @questions.order(id: "ASC").each do |question|
             = render partial: 'question', locals: {question: question}
-        .mypage__box#public-user
-          .mypage_question.index
-            .mypage_question__num No.
-            .mypage_question__q 問題文
-            .mypage_question__accuracy 正解率
-            .mypage_question__sum 回答数
-          - @user_questions.order(accuracy: "DESC").each do |question|
+        .mypage__box.user
+          = render partial: 'question_index'
+          - @user_questions.order(accuracy: "ASC").order(sum: "DESC").each do |question|
             = render partial: 'question', locals: {question: question}
-          - @yet_questions.each do |question|
-            = render partial: 'question', locals: {question: question}
-
+          - unless @yet_questions == []
+            .yet_index
+              未回答分
+            - @yet_questions.each do |question|
+              = render partial: 'question', locals: {question: question}
 -# %p#notice= notice
 -# %h1 Questions
 -# %table

@@ -2,8 +2,10 @@
   .mypage_question__num 
     = question.id
   .mypage_question__q
-    -# = truncate(question.question, length: 40)
-    = question.question
+    .mypage_question__q__content
+      = question.question
+    = link_to question_path(question) do
+      = fa_icon 'arrow-circle-right'
   - if question.corrects.find_by(user_id: current_user.id)
     .mypage_question__accuracy
       = "#{question.corrects.find_by(user_id: current_user.id).accuracy}%"

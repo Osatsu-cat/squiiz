@@ -1,4 +1,33 @@
-%p#notice= notice
-= link_to 'Edit', edit_question_path(@question)
-|
-= link_to 'Back', questions_path
+= render 'layouts/header'
+.show_container
+  .question_box
+    .question_box__q
+      .question_box__q__header
+        = image_tag 'Qmark.png' 
+        %p
+          = @question.id
+        %p.question_id 
+          = @question.id
+      .question_box__q__content
+        %p 
+          = @question.question
+    .question_box__a
+      .question_box__a__menu
+        = image_tag 'Amark.png' 
+      .question_box__a__content
+        %p 
+          = simple_format(@question.answer)
+        .question_box__a__content__links
+          - if @question.cfs
+            %p 参考URL：
+            %ul
+              - @question.cfs.each.with_index do |cf, i|
+                %li
+                  = link_to "【#{i + 1}】", cf.link , class: "cf_link", target: :_blank 
+        - if @question.corrects.find_by(user_id: current_user.id)
+          .accuracy_count
+            = "あなたの正解率： #{@question.corrects.find_by(user_id: current_user.id).accuracy}％"
+        = link_to '編集する', edit_question_path(@question), class: "edit_question_btn"
+
+  -# = link_to 'Edit', edit_question_path(@question)
+  -# = link_to 'マイページに戻る', questions_path

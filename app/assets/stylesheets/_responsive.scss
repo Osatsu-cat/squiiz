@@ -53,22 +53,25 @@
       }
     }
   }
-  #test_answer{
-    .question_box{
-      &__q{
-        &__content{
-          p{
-            font-size: 15px;
-          }
-        }
-      }
-    }
-  }
   .mypage_container{
     .mypage_bar{
-      display: none;
+      width: 100px;
+      opacity: 0.9;
+      font-size: 15px;
+      left: -100px;
+      &__menu{
+        height: 40px;
+        line-height: 40px;
+      }
+    }
+    .mypage_slide{
+      display: block;
+      .fa-chevron-left{
+        display: none;
+      }
     }
     .mypage_content{
+      margin: 0;
       width: 100%;
       &__header{
         height: 100px;
@@ -94,6 +97,20 @@
             line-height: 30px;
           }
         }
+        .dropdown{
+          margin-bottom: 5px;
+          margin-right: 5px;
+          button{
+            float: right;
+            color: $gray;
+            font-size: 10px;
+          }
+          &:after{
+            content: "";
+            display: block;
+            clear: both;
+          }
+        }
         &__boxes{
           .mypage__box{
             .mypage_question{
@@ -111,6 +128,55 @@
               &__sum{
                 width: 15%;
               }
+            }
+          }
+        }
+      }
+    }
+  }
+  .show_container{
+    padding-top: 50px;
+    .question_box{
+      width: 90%;
+      margin: 20px auto;
+      &__q{
+        padding: 10px;
+        min-height: 100px;
+        &__header{
+          height: 60px;
+          p{
+            line-height: 60px;
+            font-size: 35px;
+          }
+        }
+        &__content{
+          font-size: 15px;
+          padding: 5px;
+        }
+      }
+      &__a{
+        padding: 10px;
+        &__menu{
+          padding: 0;
+          font-size: 15px;
+        }
+        &__content{
+          padding: 5px;
+          font-size: 15px;
+          .edit_question_btn{
+            display: block;
+            width: 80px;
+            height: 20px;
+            background: rgb(128, 138, 134);
+            border-radius: 0.3em;
+            color: white;
+            font-size: 15px;
+            line-height: 20px;
+            text-align: center;
+            box-shadow: 0px 5px 10px $shadow;
+            outline: none;
+            &:active{
+              box-shadow: none;
             }
           }
         }

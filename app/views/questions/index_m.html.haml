@@ -27,14 +27,20 @@
         = link_to "プライベート問題", private_questions_path, class: "mypage_tab"
         .mypage_tab.mypage_tab-select 自分が作った問題
       .mypage_content__bottom__boxes
-        .mypage__box#mine
+        = render partial: 'order_dropdown'
+        .mypage__box.asc
+          = render partial: 'question_index'
           - unless @questions == []
             - @questions.order(id: "ASC").each do |question|
               = render partial: 'question', locals: {question: question}
           - else 
             まだありません
-        .mypage__box#mie-user
-          - @user_questions.order(accuracy: "DESC").each do |question|
+        .mypage__box.user
+          = render partial: 'question_index'
+          - @user_questions.order(accuracy: "ASC").order(sum: "DESC").each do |question|
             = render partial: 'question', locals: {question: question}
-          - @yet_questions.each do |question|
-            = render partial: 'question', locals: {question: question}
+          - unless @yet_questions == []
+            .yet_index
+              未回答分
+            - @yet_questions.each do |question|
+              = render partial: 'question', locals: {question: question}
