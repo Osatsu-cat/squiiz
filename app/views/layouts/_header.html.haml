@@ -4,7 +4,8 @@
       %p 
         = current_user.nickname
     = link_to image_tag('logo_s.png', width: '40'), root_path, class: "header__content__logo"
-    = fa_icon 'bars', class:'menu_icon'
+    .header__content__bar
+      = fa_icon 'bars', class:'menu_icon'
   .header__menu
     = link_to "ログアウト", destroy_user_session_path, class: "header__menu__link", method: :delete
     = link_to "マイページ", questions_path, class: "header__menu__link" 

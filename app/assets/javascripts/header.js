@@ -9,5 +9,11 @@ $(document).on('turbolinks:load', function(){
   },function(){
     $('.header__menu').hide();
   });
-  
+  $('.menu_icon').on('click',function(){
+    if($('.header__menu').css('display') == 'none'){
+      $('.header__menu').show();
+    }else{
+      $('.header__menu').hide();
+    }
+  });
 });
