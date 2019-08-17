@@ -17,15 +17,22 @@
     .mypage_content__header
       %h1 
         = "#{current_user.nickname}のマイページ"
+      = image_tag 'books.png', class: 'books'
       .mypage_content__header__score
         .score.accuracy_score
           %p 平均正解率：
           %h2
-            = "#{ current_user.corrects.sum(:accuracy) / current_user.corrects.count }％"
+            - unless current_user.corrects == []
+              = "#{ current_user.corrects.sum(:accuracy) / current_user.corrects.count }％"
+            - else 
+              0%
         .score.sum_score
           %p 総回答数：
           %h2 
-            = "#{current_user.corrects.sum(:sum)}回"
+            - if current_user.corrects
+              = "#{current_user.corrects.sum(:sum)}回"
+            - else 
+              0回
     .mypage_content__bottom
       .mypage_content__bottom__tabs
         .mypage_tab.mypage_tab-select 公開問題
