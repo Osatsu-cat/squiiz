@@ -74,9 +74,10 @@
       margin: 0;
       width: 100%;
       &__header{
-        height: 100px;
+        height: 110px;
         h1{
           font-size: 20px;
+          margin-bottom: 20px;
         }
         .score{
           width:40%;
@@ -96,10 +97,10 @@
       }
       &__bottom{
         &__tabs{
-          height: 30px;
+          height: 40px;
           .mypage_tab{
-            font-size: 12px;
-            line-height: 30px;
+            font-size: 13px;
+            line-height: 40px;
           }
         }
         .dropdown{
@@ -108,7 +109,7 @@
           button{
             float: right;
             color: $gray;
-            font-size: 10px;
+            font-size: 15px;
           }
           &:after{
             content: "";
@@ -118,6 +119,7 @@
         }
         &__boxes{
           .mypage__box{
+            width: 90%;
             .mypage_question{
               font-size: 10px;
               line-height: 15px;
