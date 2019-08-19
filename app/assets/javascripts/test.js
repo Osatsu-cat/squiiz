@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function(){
     $('.next_btn').css('display','block');
     var yn = $(this).text();
     var questionId = $(this).parents('.question_box').find('.question_id').text().replace(/\n/g, "");
-    if(yn == "⭕️"){
+    if(yn == "⭕"){
       $.ajax({
         type: 'post',
         url: "/questions/count",
@@ -24,11 +24,8 @@ $(document).on('turbolinks:load', function(){
       $.ajax({
         type: 'post',
         url: "/questions/count",
-        data: {id: questionId, y_count: 0, n_count: 0, accuracy: -1},
+        data: {id: questionId, y_count: 0, n_count: 1, accuracy: -1},
         dataType: 'json'
-      })
-      .done(function(user){
-        console.log('OK!');
       })
     }
     var $current_box = $(this).parents('.question_box')
