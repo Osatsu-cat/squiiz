@@ -47,6 +47,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+    @question.cfs.build
   end
 
   # GET /questions/1/edit
@@ -73,7 +74,7 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1.json
   def update
     respond_to do |format|
-      if @question.update(question_params)
+      if @question.update(update_question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { render :show, status: :ok, location: @question }
       else
@@ -101,6 +102,20 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.fetch(:question, {})
+      params.require(:question).permit(
+        :question,
+        :answer,
+        :publicness,
+        cfs_attributes: [:link, :_destroy]
+      ).merge(user_id: current_user.id)
+    end
+
+    def update_question_params
+      params.require(:question).permit(
+        :question,
+        :answer,
+        :publicness,
+        cfs_attributes: [:link, :_destroy, :id]
+      ).merge(user_id: current_user.id)
     end
 end

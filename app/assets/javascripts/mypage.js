@@ -36,4 +36,35 @@ $(document).on('turbolinks:load', function(){
       console.log("BACK");
     }
   });
+
+  //問題の編集・リンクの追加
+  function addLink(i){
+    var html = `<input class="question_form__box" type="text" name="question[cfs_attributes][${i + 1}][link]" id="question_cfs_attributes_${i + 1}_link">`
+    return html
+  }
+  var link_form = `<input class="question_form__box question_form__box-short" type="text" name="cfs[link]" id="cfs_link">`
+  $('#add_cf').on('click',function(){
+    var value = $('.link_form').find('input').last().val();
+    var index = $('.link_form').find('input').last().index('.link_form input');
+
+    if(value != ""){
+      $('.link_form').append(addLink(index));
+    }
+  });
+
+  $('.link_form').on('click', '.link_delete', function() {
+    var inputId = $(this).data('id');
+    var defaultData = $(this).data('default');
+    if (defaultData == 'default') {
+      $(this).prev().prop('checked', true);
+      $('#add_member_' + inputId).hide();
+    }else{
+      $('#add_member_' + inputId).remove();
+    }
+  });
+
+  // $('.question_delete').on('click',function(e){
+  //   e.preventDefault();
+
+  // });
 });

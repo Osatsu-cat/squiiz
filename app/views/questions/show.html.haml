@@ -27,7 +27,8 @@
         - if @question.corrects.find_by(user_id: current_user.id)
           .accuracy_count
             = "あなたの正解率： #{@question.corrects.find_by(user_id: current_user.id).accuracy}％"
-        = link_to '編集する', edit_question_path(@question), class: "edit_question_btn"
+        - if @question.user_id == current_user.id
+          = link_to '編集する', edit_question_path(@question), class: "edit_question_btn"
 
   -# = link_to 'Edit', edit_question_path(@question)
   -# = link_to 'マイページに戻る', questions_path

@@ -5,7 +5,7 @@
       %li
         = link_to "問題一覧", questions_path, class: "mypage_bar__menu mypage_bar__menu-select"
       %li
-        = link_to "問題作成", "#", class: "mypage_bar__menu"
+        = link_to "問題作成", new_question_path, class: "mypage_bar__menu"
       %li
         = link_to "ユーザー編集", "#", class: "mypage_bar__menu"
       %li
@@ -42,7 +42,6 @@
         .mypage__box.asc
           = render partial: 'question_index'
           - unless @questions == []
-            プライベート問題
             - @questions.order(id: "ASC").each do |question|
               = render partial: 'question', locals: {question: question}
           - else 
