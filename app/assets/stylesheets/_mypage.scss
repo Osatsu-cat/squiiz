@@ -3,6 +3,8 @@
   min-height: 100vh;
   padding-top: 50px;
   display: flex;
+  // マイベージのmenyu-ba- 
+
   .mypage_bar{
     width: 15%;
     min-height: calc(100vh - 50px);
@@ -25,6 +27,7 @@
       }
     }
   }
+  // スマホ用メニューバー表示プル
   .mypage_slide{
     display: none;
     width: 20px;
@@ -41,6 +44,7 @@
     z-index: 1;
     border-radius: 0 5px 5px 0;
   }
+  //マイページの中身
   .mypage_content{
     margin-left: 15%;
     width: 85%;
@@ -200,6 +204,31 @@
         &__box{
           margin-bottom: 10px;
         }
+      }
+    }
+    //ユーザー編集
+    .login_form{
+      width: 70%;
+      padding: 10px 50px;
+      .pass_confirmation{
+        padding-left:30px;
+      }
+      em{
+        display: block;
+        float: right;
+      }
+      span{
+        color: red;
+      }
+      .delete_user_btn{
+        display: block;
+        padding: 10px;
+        background: rgba(231, 27, 27, 0.74);
+        border: none;
+        font-size: 13px;
+        color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 5px $shadow;
       }
     }
   }

@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :questions
-  has_many :corrects
+  has_many :corrects, dependent: :destroy
   has_many :correct_questions, through: :corrects
 end

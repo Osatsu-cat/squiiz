@@ -36,6 +36,15 @@ $(document).on('turbolinks:load', function(){
       console.log("BACK");
     }
   });
+  // マイページの選択中の色付け
+  var reg = location.href
+  if(reg.match('/questions/new')){
+    $('.mypage_bar').find('li').eq(1).addClass('mypage_bar__menu-select');
+  }else if (reg.match('/users/edit')){
+    $('.mypage_bar').find('li').eq(2).addClass('mypage_bar__menu-select');
+  }else{
+    $('.mypage_bar').find('li').eq(0).addClass('mypage_bar__menu-select');
+  }
 
   //問題の編集・リンクの追加
   function addLink(i){

@@ -1,15 +1,6 @@
 = render 'layouts/header'
 .mypage_container
-  .mypage_bar
-    %ul
-      %li
-        = link_to "問題一覧", questions_path, class: "mypage_bar__menu mypage_bar__menu-select"
-      %li
-        = link_to "問題作成", new_question_path, class: "mypage_bar__menu"
-      %li
-        = link_to "ユーザー編集", "#", class: "mypage_bar__menu"
-      %li
-        = link_to "TOPへ戻る", root_path, class: "mypage_bar__menu"
+  = render 'mypage_bar'
   .mypage_slide
     = fa_icon 'chevron-right'
     = fa_icon 'chevron-left'
