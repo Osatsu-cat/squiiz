@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   end
 
   def test
-    @questions = Question.all.shuffle
+    @questions = Question.where(publicness: 1).shuffle
   end
 
   def count
