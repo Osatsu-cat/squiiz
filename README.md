@@ -9,7 +9,7 @@
 ![squiiz0](https://user-images.githubusercontent.com/51403845/63330184-587e4580-c36e-11e9-99b4-7c2097a2c719.gif)
 現在は記述式問題のみのため、正誤判定は自己申告になってます。
 
-###マイページ
+### マイページ
 ![squiiz1](https://user-images.githubusercontent.com/51403845/63330215-6cc24280-c36e-11e9-9c8d-815dc6a08fcf.gif)
 問題の一覧/新規作成/編集が行えます。
 
