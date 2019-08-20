@@ -77,4 +77,4 @@ gem 'font-awesome-rails'
 gem 'gon'
 gem 'devise'
 gem 'sassc-rails'
-gem 'bootstrap'
+gem "bootstrap", ">= 4.3.1"
