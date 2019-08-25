@@ -8,6 +8,7 @@
     .mypage_content__header
       %h1 
         = "#{current_user.nickname}のマイページ"
+      = image_tag 'books.png', class: 'books'
       .mypage_content__header__score
         .score.accuracy_score
           %p 平均正解率：
