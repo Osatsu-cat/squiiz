@@ -2,7 +2,7 @@
   .login_form{
     width: 80%;
   }
-
+  //テストページ
   .test_container{
     padding-top: 100px;
     .question_box{
@@ -53,6 +53,54 @@
       }
     }
   }
+  .setTime_modal{
+    &__box{
+      width: 80%;
+      padding: 20px;
+      h2{
+        font-size: 22px;
+      }
+      &__form{
+        width: 100%;
+        margin: 5% auto;
+        font-size: 30px;
+      }
+    }
+  }
+  .complete_modal{
+    &__box{
+      width: 80%;
+      padding: 20px;
+      h2{
+        font-size: 30px;
+        line-height: 70px;
+      }
+      h3{
+        font-size: 20px;
+        margin: 20px 0 60px;
+      }
+      .stars{
+        img{
+          width: 30px;
+        }
+      }
+      .crackers{
+        img{
+          width: 70px;
+        }
+      }
+      .again_btn{
+        width: 70%;
+        height: 40px;
+        margin: 0 auto;
+        padding: 10px;
+        font-size: 20px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  //マイページ
   .mypage_container{
     .mypage_bar{
       width: 150px;
@@ -142,6 +190,7 @@
       }
     }
   }
+  //問題詳細ページ
   .show_container{
     padding-top: 50px;
     .question_box{

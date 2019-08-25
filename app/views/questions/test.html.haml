@@ -1,5 +1,8 @@
 = render 'layouts/header'
 .test_container
+  #countdowntimer
+    %span#future_date
+  #reset_btn
   - @questions.each.with_index do |question, i|
     .question_box
       .question_box__q
@@ -35,6 +38,14 @@
             .accuracy_count
               = "あなたの正解率： #{question.corrects.find_by(user_id: current_user.id).accuracy}％"
           %button.next_btn 次ヘ進む
+.setTime_modal
+  .setTime_modal__box
+    %h2 1問何分で解きますか？
+    .setTime_modal__box__form
+      %input
+      %p 分
+    %button.btn#setTime_btn 設定する
+    %p ※入力しない場合1分になります  
 .complete_modal
   .complete_modal__box
     .complete_modal__box__decorations.stars

@@ -6,4 +6,11 @@ $(document).on('turbolinks:load', function(){
     color: '#F79400',
     speed: .25
   });
+
+  $('.start_btn').on('click',function(e){
+    $('.setTime_modal').show();
+    $('#setTime_btn').on('click',function(){
+      $('.setTime_modal').hide();
+    });
+  });
 });

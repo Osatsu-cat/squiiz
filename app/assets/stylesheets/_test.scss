@@ -82,6 +82,13 @@
   background-color: #DBEDF4;
   padding: 100px 0 50px;
   color: $gray;
+  #countdowntimer{
+    float: right;
+    padding: 0 50px;
+  }
+  #reset_btn{
+    display: none;
+  }
   .question_box{
     display: none;
     width: 70%;
@@ -205,18 +212,62 @@
     }
   }
 }
+.setTime_modal{
+  display: none;
+  height: 100%;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.288);
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  &__box{
+    width: 55%;
+    height: 50%;
+    margin: 100px auto 0;
+    background: white;
+    border-radius: 7px;
+    box-shadow: 0px 0px 20px $shadow;
+    padding: 50px;
+    position: relative;
+    color: $gray;
+    text-align: center;
+    &__form{
+      width: 30%;
+      margin: 5% auto;
+      text-align: center;
+      font-size: 30px;
+      input{
+        width: 40px;
+        display: inline-block;
+        border: 1px solid $light-gray;
+        border-radius: 2px;
+      }
+      p{
+        display: inline-block;
+      }
+    }
+    #setTime_btn{
+      background: $orange;
+      color: white;
+      font-size: 20px;
+      padding: 2% 5%;
+      margin-bottom: 2%;
+    }
+
+  }
+}
 
 .complete_modal{
   display: none;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   background: rgba(0, 0, 0, 0.288);
   position: absolute;
   top: 0;
   z-index: 2;
   &__box{
-    width: 800px;
-    height: 400px;
+    width: 55%;
+    height: 50%;
     margin: 100px auto 0;
     background: white;
     border-radius: 7px;
