@@ -5,9 +5,9 @@
 暗記用に使えるよう、問題の公開・非公開が選べるようになっています。  
 名前の由来は、「記憶を絞り出す」ということで"quiz"と"squeeze"をかけてます。  
 こちらのリンクより動作の確認ができます。http://3.114.174.23/  
-テスト用アカウント:  
-  email: test@gmail.com
-  password: fortest
+※テスト用アカウント:  
+  email: test@gmail.com  
+  password: fortest  
   ※ユーザー管理にはセキュリティのためdeviseを導入しています
 
 ### 出題画面
