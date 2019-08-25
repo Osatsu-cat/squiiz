@@ -82,11 +82,13 @@
       .stars{
         img{
           width: 30px;
+          object-fit: contain;
         }
       }
       .crackers{
         img{
           width: 70px;
+          object-fit: contain;
         }
       }
       .again_btn{
