@@ -18,7 +18,7 @@
 
 ### マイページ
 ※画像は開発段階のものであり、実物とは変化している可能性があります。  
-![squiiz1](https://user-images.githubusercontent.com/51403845/63330215-6cc24280-c36e-11e9-9c8d-815dc6a08fcf.gif)
+![squiiz02](https://user-images.githubusercontent.com/51403845/63647735-9c06f400-c760-11e9-96e5-67416204785f.gif)
 問題の一覧/新規作成/編集が行えます。
 
 ## 制作理由
