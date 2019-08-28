@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_10_073932) do
+ActiveRecord::Schema.define(version: 2019_08_28_064229) do
 
   create_table "cfs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "link"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 2019_08_10_073932) do
     t.index ["user_id"], name: "index_corrects_on_user_id"
   end
 
+  create_table "dummies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "answer", null: false
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_dummies_on_question_id"
+  end
+
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "question", null: false
     t.text "answer", null: false
@@ -41,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_08_10_073932) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.integer "publicness", default: 0
+    t.string "q_type"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
@@ -60,5 +69,6 @@ ActiveRecord::Schema.define(version: 2019_08_10_073932) do
   add_foreign_key "cfs", "questions"
   add_foreign_key "corrects", "questions"
   add_foreign_key "corrects", "users"
+  add_foreign_key "dummies", "questions"
   add_foreign_key "questions", "users"
 end
