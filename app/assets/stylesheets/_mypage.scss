@@ -199,11 +199,37 @@
       width: 100%;
       min-height: calc(100vh - 50px); 
       padding: 50px 0;
+      .q_types{
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        .q_type{
+          display: block;
+          width: 33%;
+          height: 50px;
+          background: #ada52c;
+          color: white;
+          font-size: 18px;
+          opacity: 0.7;
+          border: none;
+          border-radius: 5px 5px 0 0 ;
+        }
+        .q_type-select{
+          opacity: 1;
+        }
+      }
       .question_form{
         width: 80%;
         &__box{
           margin-bottom: 10px;
         }
+      }
+      .select_form{
+        display: none;
+      }
+      .yn_form{
+        display: none;
       }
     }
     //ユーザー編集

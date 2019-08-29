@@ -58,10 +58,15 @@
       &__content{
         display: block;
         width: 100%;
-        padding: 0 35px 30px;
+        padding: 0 50px 30px;
         font-size: 20px;
         line-height:35px;
         word-wrap: break-word;
+        .answer_line{
+          p{
+            border-bottom: 1px solid $light-gray;
+          }
+        }
         &__links{
           display: flex;
           margin-top: 10px;
@@ -109,7 +114,7 @@
     label{
       font-size: 20px;
     }
-    #add_cf{
+    .add_cf{
       display: inline-block;
       background: white;
       border-radius: 3px;
@@ -133,6 +138,54 @@
         float: right;
         label{
           font-size: 15px;
+        }
+      }
+    }
+    .add_dummy{
+      display: inline-block;
+      background: white;
+      border-radius: 3px;
+      border: 1px solid $gray;
+      height: 20px;
+      width: 20px;
+      line-height: 20px;
+      text-align: center;
+      cursor: pointer;
+      padding: 0;
+      opacity: 0.8;
+      &:hover{
+        opacity: 1;
+      }
+    }
+    .dummy_form{
+      input{
+        margin-bottom: 10px;
+      }
+      .dummy_delete{
+        float: right;
+        label{
+          font-size: 15px;
+        }
+      }
+    }
+    .yn_box{
+      margin: 0 auto;
+      display: flex;
+      width: 500px;
+      .yn_btn{
+        display: block;
+        width: 100px;
+        margin: 0 50px;
+        font-size: 60px;
+        text-align: center;
+        line-height: 100px;
+        background: rgba(27, 27, 27, 0.315);
+        border-radius: 15px;
+        box-shadow: 0px 5px 10px $shadow;
+        opacity: 0.8;
+        outline: none;
+        &:hover{
+          background: white;
         }
       }
     }
@@ -173,7 +226,6 @@
     text-decoration: none;
   }
 }
-
 
 .edit_container{
   width: 100vw;

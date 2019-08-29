@@ -47,6 +47,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+    @question.dummies.build
     @question.cfs.build
   end
 
@@ -58,7 +59,6 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
@@ -85,7 +85,7 @@ class QuestionsController < ApplicationController
   end
 
   # DELETE /questions/1
-  # DELETE /questions/1.json
+  # DELETE /questions/1.jsonb
   def destroy
     @question.destroy
     respond_to do |format|
@@ -102,12 +102,43 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(
-        :question,
-        :answer,
-        :publicness,
-        cfs_attributes: [:link, :_destroy]
-      ).merge(user_id: current_user.id)
+      if params[:question][:q_type] == "select"
+        if params[:question][:cfs_attributes]["0"][:link] == ""
+          params.require(:question).permit(
+            :question,
+            :answer,
+            :publicness,
+            :q_type,
+            dummies_attributes: [:answer, :_destroy]
+          ).merge(user_id: current_user.id)
+        else
+          params.require(:question).permit(
+            :question,
+            :answer,
+            :publicness,
+            :q_type,
+            cfs_attributes: [:link, :_destroy],
+            dummies_attributes: [:answer, :_destroy]
+          ).merge(user_id: current_user.id)
+        end
+      else
+        if params[:question][:cfs_attributes]["0"][:link] == ""
+          params.require(:question).permit(
+            :question,
+            :answer,
+            :publicness,
+            :q_type,
+          ).merge(user_id: current_user.id)
+        else
+          params.require(:question).permit(
+            :question,
+            :answer,
+            :publicness,
+            :q_type,
+            cfs_attributes: [:link, :_destroy]
+          ).merge(user_id: current_user.id)
+        end
+      end
     end
 
     def update_question_params
@@ -115,7 +146,8 @@ class QuestionsController < ApplicationController
         :question,
         :answer,
         :publicness,
-        cfs_attributes: [:link, :_destroy, :id]
+        cfs_attributes: [:link, :_destroy, :id],
+        dummies_attributes: [:answer, :_destroy, :id]
       ).merge(user_id: current_user.id)
     end
 end

@@ -1,7 +1,12 @@
 = render 'layouts/header'
 .edit_container
   .question_box
-    = render 'form', question: @question
+    - if @question.q_type == "text"
+      = render 'text_form', question: @question
+    - elsif @question.q_type == "select"
+      = render 'select_form', question: @question
+    - else 
+      = render 'yn_form', question: @question
 -# = link_to 'Show', @question
 -# |
 -# = link_to 'Back', questions_path

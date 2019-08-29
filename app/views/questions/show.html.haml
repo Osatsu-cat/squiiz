@@ -15,10 +15,19 @@
       .question_box__a__menu
         = image_tag 'Amark.png' 
       .question_box__a__content
-        %p 
+        - if @question.q_type == "select"
+          .answer_line
+            ＜正解＞
+            = simple_format(@question.answer)
+          %p ＜間違い＞
+          %ul
+            - @question.dummies.each do |dummy| 
+              %li.answer_line 
+                = simple_format(dummy.answer)
+        - else 
           = simple_format(@question.answer)
         .question_box__a__content__links
-          - if @question.cfs
+          - unless @question.cfs == []
             %p 参考URL：
             %ul
               - @question.cfs.each.with_index do |cf, i|

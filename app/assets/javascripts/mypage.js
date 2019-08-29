@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
   //     $(this).addClass('mypage_tab-select');
   //   }
   // });
-
+  var reg = location.href
   //選択中のドロップダウンメニューの表示
   $('.dropdown-menu .dropdown-item').click(function(){
     var visibleItem = $('.dropdown-toggle', $(this).closest('.dropdown'));
@@ -36,8 +36,8 @@ $(document).on('turbolinks:load', function(){
       console.log("BACK");
     }
   });
+  
   // マイページの選択中の色付け
-  var reg = location.href
   if(reg.match('/questions/new')){
     $('.mypage_bar').find('li').eq(1).addClass('mypage_bar__menu-select');
   }else if (reg.match('/users/edit')){
@@ -46,18 +46,47 @@ $(document).on('turbolinks:load', function(){
     $('.mypage_bar').find('li').eq(0).addClass('mypage_bar__menu-select');
   }
 
+  //問題の作成時のタイプ選択
+  if(reg.match('/questions/new')){
+    $('.q_type').on('click',function(){
+      var type = $(this).text();
+      $('.q_type').removeClass('q_type-select');
+      $('.question_form').hide();
+      $(this).addClass('q_type-select');
+      if(type == '記述式'){
+        $('.text_form').show();
+      }else if(type == '選択式'){
+        $('.select_form').show();
+      }else{
+        $('.yn_form').show();
+      }
+    })
+  }
+
   //問題の編集・リンクの追加
   function addLink(i){
     var html = `<input class="question_form__box" type="text" name="question[cfs_attributes][${i + 1}][link]" id="question_cfs_attributes_${i + 1}_link">`
     return html
   }
-  var link_form = `<input class="question_form__box question_form__box-short" type="text" name="cfs[link]" id="cfs_link">`
-  $('#add_cf').on('click',function(){
-    var value = $('.link_form').find('input').last().val();
-    var index = $('.link_form').find('input').last().index('.link_form input');
-
-    if(value != ""){
-      $('.link_form').append(addLink(index));
+  function addLinkForm(i){
+    var html = `
+                <div class= "link_form">
+                  <input class="question_form__box" type="text" name="question[cfs_attributes][${i}][link]" id="question_cfs_attributes_${i}_link">
+                </div>
+              `
+    return html
+  }
+  $('.add_cf').on('click',function(){
+    var $form = $(this).parent().find('.link_form');
+    if($form.length == 0){
+      $(this).parent().append(addLinkForm(0));
+      console.log("nothing");
+    }else{
+      var value = $form.find('input').last().val();
+      var index = $form.find('input').last().index('.link_form input');
+      if(value != ""){
+        $form.append(addLink(index));
+      }
     }
   });
 
@@ -66,14 +95,42 @@ $(document).on('turbolinks:load', function(){
     var defaultData = $(this).data('default');
     if (defaultData == 'default') {
       $(this).prev().prop('checked', true);
-      $('#add_member_' + inputId).hide();
-    }else{
-      $('#add_member_' + inputId).remove();
     }
   });
 
-  // $('.question_delete').on('click',function(e){
-  //   e.preventDefault();
+  //選択式問題の解答追加
+  function addDummy(i){
+    var html = `<input class="question_form__box" type="text" name="question[dummies_attributes][${i + 1}][answer]" id="question_dummies_attributes_${i + 1}_answer">`
+    return html
+  }
+  $('.add_dummy').on('click',function(){
+    var $form = $(this).parent().find('.dummy_form');
+    var value = $form.find('input').last().val();
+    var index = $form.find('input').last().index('.dummy_form input');
+    if(value != ""){
+      $form.append(addDummy(index));
+    }
+  });
 
-  // });
+  //◯×問題の解答選択
+  $('.yn_btn').on('click',function(){
+    $(this).css('background','white');
+    $(this).siblings().css('background','rgba(27, 27, 27, 0.315)');
+    var text = $(this).text();
+    if(text == '⭕'){
+      $(this).parents('.q_field').find('.yn_value').prop('value','⭕️');
+    }else{
+      $(this).parents('.q_field').find('.yn_value').prop('value','❌');
+    }
+  });
+
+  //◯×問題編集時の選択中の表示
+  if(reg.match(/\d.\/edit/)){
+    var value = $('.yn_value').val();
+    if(value == '⭕️'){
+      $('.yn_box').find('.yn_btn').first().css('background','white');
+    }else{
+      $('.yn_box').find('.yn_btn').next().css('background','white');
+    }
+  }
 });
