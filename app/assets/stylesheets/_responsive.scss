@@ -22,6 +22,26 @@
           font-size: 20px;
           padding: 5px;
         }
+        .yn_answer{
+          width: 80%;
+          display: flex;
+          justify-content: space-between;
+          &__btn{
+            height: 80px;
+            width: 40%;
+            font-size: 30px;
+            line-height: 80px;
+            margin: 0;
+            &:hover{
+              font-size: 50px;
+            }
+          }
+        }
+        .select_answer{
+          &__choice{
+            margin: 10px auto;
+          }
+        }
       }
       &__a{
         padding: 10px;
@@ -101,6 +121,20 @@
       }
     }
   }
+  //問題フォーム
+  .question_form{
+    .q_field{
+      .yn_box{
+        width: 200px;
+        .yn_btn{
+          width: 80px;
+          line-height: 80px;
+          font-size: 40px;
+        }
+      }
+    }
+  }
+
 
   //マイページ
   .mypage_container{

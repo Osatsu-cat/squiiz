@@ -16,10 +16,11 @@
         %p 正解を見る(クリック)
         = ""
     .question_box__a__content
+      .judge 
       %p 
         = simple_format(question.answer)
       .question_box__a__content__links
-        - if question.cfs
+        - unless question.cfs == []
           %p 参考URL：
           %ul
             - question.cfs.each.with_index do |cf, i|

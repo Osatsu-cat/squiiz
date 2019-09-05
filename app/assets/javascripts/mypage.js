@@ -61,31 +61,33 @@ $(document).on('turbolinks:load', function(){
         $('.yn_form').show();
       }
     })
+    //選択問題・ダミーの削除ボタン除去
+    var $dummy = $('.select_form').find('.dummy_form').first();
+    $dummy.find('.cancel_btn').css('display','none');
   }
 
   //問題の編集・リンクの追加
   function addLink(i){
-    var html = `<input class="question_form__box" type="text" name="question[cfs_attributes][${i + 1}][link]" id="question_cfs_attributes_${i + 1}_link">`
-    return html
-  }
-  function addLinkForm(i){
     var html = `
-                <div class= "link_form">
-                  <input class="question_form__box" type="text" name="question[cfs_attributes][${i}][link]" id="question_cfs_attributes_${i}_link">
+                <div class="link_form">
+                  <input class="question_form__box a_link" type="text" name="question[cfs_attributes][${i}][link]" id="question_cfs_attributes_${i}_link">
+                  <div class="cancel_btn">
+                    <i class="fa fa-trash"></i>
+                    削除
+                  </div>
                 </div>
-              `
+                `
     return html
   }
   $('.add_cf').on('click',function(){
     var $form = $(this).parent().find('.link_form');
     if($form.length == 0){
-      $(this).parent().append(addLinkForm(0));
-      console.log("nothing");
+      $(this).parent().append(addLink(0));
     }else{
       var value = $form.find('input').last().val();
       var index = $form.find('input').last().index('.link_form input');
       if(value != ""){
-        $form.append(addLink(index));
+        $form.parent().append(addLink(index + 1));
       }
     }
   });
@@ -100,15 +102,23 @@ $(document).on('turbolinks:load', function(){
 
   //選択式問題の解答追加
   function addDummy(i){
-    var html = `<input class="question_form__box" type="text" name="question[dummies_attributes][${i + 1}][answer]" id="question_dummies_attributes_${i + 1}_answer">`
+    var html = `<div class="dummy_form">
+                  <input class="question_form__box a_dummy" type="text" name="question[dummies_attributes][${i + 1}][answer]" id="question_dummies_attributes_${i + 1}_answer">
+                  <div class="cancel_btn">
+                    <i class="fa fa-trash"></i>
+                    削除
+                  </div>
+                </div>
+              `
     return html
   }
   $('.add_dummy').on('click',function(){
-    var $form = $(this).parent().find('.dummy_form');
+    var $block =  $(this).parent();
+    var $form = $block.find('.dummy_form');
     var value = $form.find('input').last().val();
     var index = $form.find('input').last().index('.dummy_form input');
     if(value != ""){
-      $form.append(addDummy(index));
+      $block.append(addDummy(index));
     }
   });
 

@@ -49,6 +49,7 @@ class QuestionsController < ApplicationController
     @question = Question.new
     @question.dummies.build
     @question.cfs.build
+    @cf = Cf.new
   end
 
   # GET /questions/1/edit

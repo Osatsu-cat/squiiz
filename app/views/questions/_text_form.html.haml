@@ -11,17 +11,20 @@
   .q_field
     %label 質問
     %br
-    = f.text_area :question , class: "question_form__box question_form__box-wide" 
+    = f.text_area :question ,placeholder: "　(200字以内)", class: "question_form__box question_form__box-wide a_question" 
   .q_field
     %label 解答
     %br
-    = f.text_area :answer , class: "question_form__box question_form__box-wide"
+    = f.text_area :answer ,placeholder: "　(500字以内)", class: "question_form__box question_form__box-wide a_answer"
   .q_field
     %label 参考URL
     .add_cf +
     = f.fields_for :cfs do |cf|
       .link_form
-        = cf.text_field :link , class: "question_form__box"
+        = cf.text_field :link , class: "question_form__box a_link"
+        .cancel_btn
+          = fa_icon 'trash'
+          削除
         - if question.persisted?
           .link_delete
             = cf.check_box :_destroy

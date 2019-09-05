@@ -4,7 +4,12 @@
     %span#future_date
   #reset_btn
   - @questions.each.with_index do |question, i|
-    = render partial: 'text_quiz', locals: {question: question, i: i}
+    - if question.q_type == "text"
+      = render partial: 'text_quiz', locals: {question: question, i: i}
+    - elsif question.q_type == "select"
+      = render partial: 'select_quiz', locals: {question: question, i: i}
+    - else
+      = render partial: 'yn_quiz', locals: {question: question, i: i}
 .setTime_modal
   .setTime_modal__box
     %h2 1問何分で解きますか？

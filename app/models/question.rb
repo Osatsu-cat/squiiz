@@ -6,4 +6,9 @@ class Question < ApplicationRecord
   has_many :dummies, dependent: :destroy
   accepts_nested_attributes_for :cfs, allow_destroy: true
   accepts_nested_attributes_for :dummies, allow_destroy: true
+
+  validates :question, presence: true,length: { maximum: 200 }
+  validates :answer, presence: true,length: { maximum: 500 }
+  validates :publicness, presence: true
+  validates :q_type, presence: true
 end

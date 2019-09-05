@@ -130,11 +130,33 @@
         opacity: 1;
       }
     }
+    .cancel_btn{
+      display: block;
+      width: 80px;
+      height: 25px;
+      margin: 0 5px;
+      font-size: 15px;
+      line-height: 20px;
+      background: $dark-blue;
+      border-radius: 5px;
+      text-align: center;
+      color: white;
+      opacity: 0.8;
+      &:hover{
+        opacity: 1;
+      }
+      &:active{
+        opacity: 1;
+      }
+    }
     .link_form{
+      display: flex;
+      justify-content: space-between;
       input{
         margin-bottom: 10px;
       }
       .link_delete{
+        display: none;
         float: right;
         label{
           font-size: 15px;
@@ -158,10 +180,13 @@
       }
     }
     .dummy_form{
+      display: flex;
+      justify-content: space-between;
       input{
         margin-bottom: 10px;
       }
       .dummy_delete{
+        display: none;
         float: right;
         label{
           font-size: 15px;
@@ -171,11 +196,11 @@
     .yn_box{
       margin: 0 auto;
       display: flex;
-      width: 500px;
+      width: 300px;
+      justify-content: space-between;
       .yn_btn{
         display: block;
         width: 100px;
-        margin: 0 50px;
         font-size: 60px;
         text-align: center;
         line-height: 100px;
@@ -225,6 +250,16 @@
     opacity: 0.8;
     text-decoration: none;
   }
+}
+
+//jsエラー表示
+.error-box{
+  border:1px solid red;
+}
+.sign-error{
+  color: red;
+  text-align: center;
+  margin-top: 5px;
 }
 
 .edit_container{

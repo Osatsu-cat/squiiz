@@ -9,22 +9,22 @@
     .question_box__q__content
       %p 
         = question.question
-    .select_answer
-      - choices = [{judge: "true", text: question.answer}]
-      - question.dummies.each do |dummy|
-        - choices << {judge: "false", text: dummy.answer}
-      - choices.shuffle.each do |choice|
-        %button{"data-judge": choice[:judge], class: "select_answer__choice"}
-          = choice[:text]
+    .yn_answer
+      %button.yn_answer__btn⭕
+      %button.yn_answer__btn❌
   .question_box__a
     .question_box__a__menu
       = image_tag 'Amark.png' 
     .question_box__a__content
-      .judge 
+      .judge
       .match
+        .match_yours
+          あなたの解答：
         .match_correct
           正解：
-          = question.answer
+          %span
+            = question.answer
+          
       .question_box__a__content__links
         - unless question.cfs == []
           %p 参考URL：

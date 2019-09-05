@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :questions
   has_many :corrects, dependent: :destroy
   has_many :correct_questions, through: :corrects
+
+  validates :email, format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 end

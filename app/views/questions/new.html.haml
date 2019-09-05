@@ -13,7 +13,7 @@
         %button.q_type.q_type-select 記述式
         %button.q_type 選択式
         %button.q_type ◯×式
-      = render 'text_form', question: @question
-      = render 'select_form', question: @question
-      = render 'yn_form', question: @question
+      = render 'text_form', question: @question, cf: @cf
+      = render 'select_form', question: @question, cf: @cf
+      = render 'yn_form', question: @question, cf: @cf
       
