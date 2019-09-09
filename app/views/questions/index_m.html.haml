@@ -47,3 +47,12 @@
               未回答分
             - @yet_questions.each do |question|
               = render partial: 'question', locals: {question: question}
+        .mypage__box.sum
+          = render partial: 'question_index'
+          - unless @yet_questions == []
+            .yet_index
+              未回答分
+            - @yet_questions.each do |question|
+              = render partial: 'question', locals: {question: question}
+          - @user_questions.order(sum: "ASC").each do |question|
+            = render partial: 'question', locals: {question: question}

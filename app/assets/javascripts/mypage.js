@@ -14,9 +14,15 @@ $(document).on('turbolinks:load', function(){
     if (order == '問題番号順'){
       $('.asc').show();
       $('.user').hide();
-    }else{
+      $('.sum').hide();
+    }else if(order == '正解率が低い順'){
       $('.asc').hide();
       $('.user').show();
+      $('.sum').hide();
+    }else{
+      $('.asc').hide();
+      $('.user').hide();
+      $('.sum').show();
     }
   });
 
