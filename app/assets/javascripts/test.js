@@ -29,7 +29,7 @@ $(document).on('turbolinks:load', function(){
       $.ajax({
         type: 'post',
         url: "/questions/count",
-        data: {id: questionId, y_count: 0, n_count: 1},
+        data: {id: questionId, y_count: 0, n_count: 1, last: "時間切れ"},
         dataType: 'json'
       })
     }
