@@ -33,6 +33,8 @@
               %li
                 = link_to "【#{i + 1}】", cf.link , class: "cf_link", target: :_blank 
       - if question.corrects.find_by(user_id: current_user.id)
+        - unless question.corrects.find_by(user_id: current_user.id).last == nil
+          = "(前回の解答： #{question.corrects.find_by(user_id: current_user.id).last} )"
         .accuracy_count
           = "あなたの正解率： #{question.corrects.find_by(user_id: current_user.id).accuracy}％"
       %button.next_btn 次ヘ進む

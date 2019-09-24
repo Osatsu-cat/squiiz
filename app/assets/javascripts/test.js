@@ -60,18 +60,19 @@ $(document).on('turbolinks:load', function(){
     $('.next_btn').css('display','block');
     var yn = $(this).text();
     var questionId = $(this).parents('.question_box').find('.question_id').text().replace(/\n/g, "");
+    var answer = $(this).parents('.question_box').find('textarea').val();
     if(yn == "⭕"){
       $.ajax({
         type: 'post',
         url: "/questions/count",
-        data: {id: questionId, y_count: 1, n_count: 0},
+        data: {id: questionId, y_count: 1, n_count: 0, last: answer},
         dataType: 'json'
       })
     }else{
       $.ajax({
         type: 'post',
         url: "/questions/count",
-        data: {id: questionId, y_count: 0, n_count: 1},
+        data: {id: questionId, y_count: 0, n_count: 1, last: answer},
         dataType: 'json'
       })
     }
@@ -91,13 +92,14 @@ $(document).on('turbolinks:load', function(){
     $(this).css({'border':'1px solid rgb(250, 148, 148)','background':'rgba(250, 148, 148, 0.363)'});
     var $box = $(this).parents('.question_box');
     var judge = $(this).attr("data-judge");
+    var answer = $(this).text();
     var questionId = $(this).parents('.question_box').find('.question_id').text().replace(/\n/g, "");
     if(judge == "true"){
       $box.find('.judge').append('正解です！');
       $.ajax({
         type: 'post',
         url: "/questions/count",
-        data: {id: questionId, y_count: 1, n_count: 0},
+        data: {id: questionId, y_count: 1, n_count: 0, last: answer},
         dataType: 'json'
       })
     }else{
@@ -105,7 +107,7 @@ $(document).on('turbolinks:load', function(){
       $.ajax({
         type: 'post',
         url: "/questions/count",
-        data: {id: questionId, y_count: 0, n_count: 1},
+        data: {id: questionId, y_count: 0, n_count: 1, last: answer},
         dataType: 'json'
       })
     }
@@ -128,7 +130,7 @@ $(document).on('turbolinks:load', function(){
       $.ajax({
         type: 'post',
         url: "/questions/count",
-        data: {id: questionId, y_count: 1, n_count: 0},
+        data: {id: questionId, y_count: 1, n_count: 0, last: answer},
         dataType: 'json'
       })
     }else{
@@ -138,7 +140,7 @@ $(document).on('turbolinks:load', function(){
       $.ajax({
         type: 'post',
         url: "/questions/count",
-        data: {id: questionId, y_count: 0, n_count: 1},
+        data: {id: questionId, y_count: 0, n_count: 1,last: answer},
         dataType: 'json'
       })
     }

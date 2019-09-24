@@ -9,6 +9,7 @@
     .question_box__q__content
       %p 
         = question.question
+      %textarea{placeholder: " 解答を入力してください(1000字以内)"}
   .question_box__a
     .question_box__a__menu
       = image_tag 'Amark.png' 
@@ -30,6 +31,10 @@
         %button.correct_btn ⭕
         %button.correct_btn ❌
       - if question.corrects.find_by(user_id: current_user.id)
+        - unless question.corrects.find_by(user_id: current_user.id).last == nil
+          前回の解答：
+          .last_answer
+            = question.corrects.find_by(user_id: current_user.id).last
         .accuracy_count
           = "あなたの正解率： #{question.corrects.find_by(user_id: current_user.id).accuracy}％"
       %button.next_btn 次ヘ進む

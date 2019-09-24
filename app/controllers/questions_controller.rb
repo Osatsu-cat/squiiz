@@ -15,7 +15,8 @@ class QuestionsController < ApplicationController
     @correct.update_attributes(
       y_count: @correct.y_count += params[:y_count].to_i,
       n_count: @correct.n_count += params[:n_count].to_i,
-      sum: @correct.sum += 1
+      sum: @correct.sum += 1,
+      last: params[:last]
     )
     @correct.update_attributes(accuracy: (@correct.y_count * 100) / @correct.sum )
   end
